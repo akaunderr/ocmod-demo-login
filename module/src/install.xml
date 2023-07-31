@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<insertfile>_inc/summary.txt</insertfile>
+-->
+
+<modification>
+    <name>#ocmod.space: <insertvar>MODCODE</insertvar></name>
+    <code><insertvar>MODFILE</insertvar></code>
+    <version><insertvar>MODVERS</insertvar></version>
+    <author><insertvar>AUTHOR</insertvar></author>
+    <link><insertvar>XMLLINK</insertvar></link>
+
+    <file path="admin/view/template/common/login.twig">
+        <operation error="log">
+            <search>
+                <![CDATA[{{ footer }}]]>
+            </search>
+            <add position="after">
+                <![CDATA[
+{# << <insertvar>MODCODE</insertvar> #}
+<script type="text/javascript"><!--
+  $( document ).ready(function() {
+    console.log('ready to login!');
+
+    $('input[name="username"]').val('demo');
+    $('input[name="password"]').val('demo');
+  });
+//--></script>
+{# >> <insertvar>MODCODE</insertvar> #}]]>
+            </add>
+        </operation>
+    </file>
+</modification>
